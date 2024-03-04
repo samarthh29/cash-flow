@@ -30,6 +30,7 @@ const userSchema = new mongoose.Schema({
     trim: true,
     maxLength: 50,
   },
+  
 });
 
 const User = mongoose.mongoose.model("User", userSchema);
