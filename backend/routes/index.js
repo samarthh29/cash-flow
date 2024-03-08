@@ -7,6 +7,6 @@ const router = express.Router();
 router.use("/user", userRouter);
 router.use("/account", accountRouter);
 
-modeule.exports = router;
+module.exports = router;
 //api/v1/user
 //api/v1/transaction
