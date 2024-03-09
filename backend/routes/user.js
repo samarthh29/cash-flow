@@ -1,3 +1,4 @@
+// backend/routes/user.js
 const express = require("express");
 
 const router = express.Router();
@@ -40,7 +41,6 @@ router.post("/signup", async (req, res) => {
   });
   const userId = user._id;
 
-  // --create new account--
   await Account.create({
     userId,
     balance: 1 + Math.random() * 10000,
@@ -58,8 +58,6 @@ router.post("/signup", async (req, res) => {
     token: token,
   });
 });
-
-// --sign in --
 
 const signinBody = zod.object({
   username: zod.string().email(),
