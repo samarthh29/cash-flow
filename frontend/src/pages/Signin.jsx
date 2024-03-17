@@ -3,6 +3,8 @@ import { Button } from "../components/Button";
 import { Heading } from "../components/Heading";
 import { InputBox } from "../components/InputBox";
 import { SubHeading } from "../components/SubHeading";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const Signin = () => {
   return (
@@ -14,7 +16,6 @@ export const Signin = () => {
           <InputBox placeholder="samarth@gmail.com" label={"Email"} />
           <InputBox placeholder="123456" label={"Password"} />
           <div className="pt-4">
-            
             <Button label={"Sign in"} />
           </div>
           <BottomWarning
