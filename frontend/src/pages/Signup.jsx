@@ -18,7 +18,7 @@ export const Signup = () => {
 
   return (
     <div>
-      <ToastContainer autoClose={500} hideProgressBar={true} />
+      <ToastContainer autoClose={1000} hideProgressBar={true} />
 
       <div className="bg-slate-300 h-screen flex justify-center">
         <div className="flex flex-col justify-center">
