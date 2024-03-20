@@ -133,7 +133,7 @@ router.get("/info", authMiddleware, async (req, res) => {
       firstName: user.firstName,
       lastName: user.lastName,
       username: user.username,
-      ballance: account.balance,
+      balance: account.balance,
     });
   } catch (e) {
     console.error("Error while getting user info: ", e);
