@@ -1,12 +1,11 @@
-export const Appbar = () => {
+export const Appbar = ({ name }) => {
   return (
-    <div className="shadow h-14 flex justify-between">
-      <div className="flex flex-col justify-center h-full ml-4">CashFlow</div>
-      <div className="flex">
-        <div className="flex flex-col justify-center h-full mr-4">Hello</div>
-        <div className="rounded-full h-12 w-12 bg-slate-200 flex justify-center mt-1 mr-2">
-          <div className="flex flex-col justify-center h-full text-xl">U</div>
-        </div>
+    <div className="shadow h-16 flex justify-between items-center">
+      <div className="flex flex-col justify-center text-xl font-bold h-full ml-4">
+        CashFlow
+      </div>
+      <div className="flex items-center">
+        <div className="h-full mr-6 font-bold">Hello {name}!</div>
       </div>
     </div>
   );
