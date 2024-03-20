@@ -119,6 +119,28 @@ router.put("/", authMiddleware, async (req, res) => {
   });
 });
 
+router.get("/info", authMiddleware, async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.userId });
+    if (!user) {
+      return res.status(404).json({ message: "User not found! " });
+    }
+
+    const account = await Account.findOne({ userId: req.userId });
+
+    res.json({
+      id: user._id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      username: user.username,
+      ballance: account.balance,
+    });
+  } catch (e) {
+    console.error("Error while getting user info: ", e);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
 router.get("/bulk", async (req, res) => {
   const filter = req.query.filter || "";
 
