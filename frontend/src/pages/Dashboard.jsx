@@ -6,6 +6,7 @@ import axios from "axios";
 import { CircleSpinnerOverlay } from "react-spinner-overlay";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { get } from "../../../backend/routes/account";
 
 export const Dashboard = () => {
   const [firstName, setFirstName] = useState("");
@@ -16,7 +17,7 @@ export const Dashboard = () => {
   const getBalance = async () => {
     const token = localStorage.getItem("token");
     try {
-     await axios
+      await axios
         .get(`http://localhost:3000/api/v1/user/info`, {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -37,6 +38,10 @@ export const Dashboard = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    getBalance();
+  }, []);
 
   if (loading) {
     return <CircleSpinnerOverlay />;
