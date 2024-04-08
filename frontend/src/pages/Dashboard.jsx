@@ -13,10 +13,10 @@ export const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [id, setId] = useState(0);
 
-  useEffect(() => {
+  const getBalance = async () => {
     const token = localStorage.getItem("token");
     try {
-      axios
+     await axios
         .get(`http://localhost:3000/api/v1/user/info`, {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -36,7 +36,7 @@ export const Dashboard = () => {
       toast.error("Error while fetching the data");
       setLoading(false);
     }
-  }, []);
+  };
 
   if (loading) {
     return <CircleSpinnerOverlay />;
