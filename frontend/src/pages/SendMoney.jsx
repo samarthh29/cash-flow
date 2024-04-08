@@ -1,12 +1,19 @@
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
+import { useState } from "react/";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import doneImg from "../assets/verify.png";
 
 export const SendMoney = () => {
+  const [amount, setAmount] = useState(0);
+  const [error, setError] = useState("");
+  const [response, setResponse] = useState("");
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
   const name = searchParams.get("name");
-  const [amount, setAmount] = useState(0);
+  const navigate = useNavigate();
+
+  console.log(amount);
 
   return (
     <div class="flex justify-center h-screen bg-gray-100">
