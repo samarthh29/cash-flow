@@ -3,16 +3,16 @@ import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import doneImg from "../assets/verify.png";
 
-
 export const SendMoney = () => {
   const [amount, setAmount] = useState(null);
   const [error, setError] = useState("");
   const [response, setResponse] = useState("");
+  const [loading, setLoading] = useState(false); // New state for loading
   const [serchParams] = useSearchParams();
   const id = serchParams.get("id");
   const name = serchParams.get("name");
   const navigate = useNavigate();
-  console.log(amount);
+
   return (
     <div className="flex justify-center h-screen bg-gray-100">
       <div className="h-full flex flex-col justify-center">
@@ -59,6 +59,7 @@ export const SendMoney = () => {
                 <button
                   onClick={async () => {
                     try {
+                      setLoading(true); // Set loading to true when initiating the transfer
                       const response = await axios.post(
                         "http://localhost:3000/api/v1/account/transfer",
                         { to: id, amount },
@@ -73,6 +74,7 @@ export const SendMoney = () => {
                       setError("");
                       setTimeout(() => {
                         setResponse(response.statusText);
+                        setLoading(false); // Set loading back to false after the response
                         // alert(response.data.message);
                       }, 2000);
                     } catch (error) {
@@ -82,7 +84,7 @@ export const SendMoney = () => {
                   }}
                   className="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-10 px-4 py-2 w-full bg-green-500 text-white"
                 >
-                  Initiate Transfer
+                  {loading ? "Loading..." : "Initiate Transfer"} {/* Show loading spinner or button text */}
                 </button>
                 {error && <p className="text-red-500">{error}</p>}
               </div>
