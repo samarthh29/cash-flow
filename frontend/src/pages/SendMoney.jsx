@@ -7,7 +7,7 @@ export const SendMoney = () => {
   const [amount, setAmount] = useState(null);
   const [error, setError] = useState("");
   const [response, setResponse] = useState("");
-  const [loading, setLoading] = useState(false); // New state for loading
+  const [loading, setLoading] = useState(false);
   const [serchParams] = useSearchParams();
   const id = serchParams.get("id");
   const name = serchParams.get("name");
@@ -75,7 +75,7 @@ export const SendMoney = () => {
                       setTimeout(() => {
                         setResponse(response.statusText);
                         setLoading(false); // Set loading back to false after the response
-                        // alert(response.data.message);
+                
                       }, 2000);
                     } catch (error) {
                       console.log(error);
